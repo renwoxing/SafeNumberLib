@@ -71,11 +71,13 @@ return [[SN_Payment sharedPayment] handleOpenURL:url];
 备注：
 本版本不支持HTTPS协议,请复制以下代码到Info.plist
 
+```
 <key>NSAppTransportSecurity</key>
 <dict>
 <key>NSAllowsArbitraryLoads</key>
 <true/>
 </dict>
+```
 
 接口使用方法
 =======
