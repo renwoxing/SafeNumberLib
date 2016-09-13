@@ -37,9 +37,15 @@
     #import "WXApi.h"
 ```
 
-复制代码[WXApi registerApp:WeChatAppID withDescription:@"SafeNumber API Demo"]; 到
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions方法中
-传入自己的微信AppID 和描述信息
+复制代码
+```
+[WXApi registerApp:WeChatAppID withDescription:@"SafeNumber API Demo"];
+```
+到
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+```
+方法中。传入自己的微信AppID 和描述信息
 
 复制以下代码到AppDelegate.m中
 ```
