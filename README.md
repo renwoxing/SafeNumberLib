@@ -33,8 +33,8 @@
 
 5 在AppDelegate中添加
 ```
-    #import <SafeNumberLib/SafeNumberLib.h>
-    #import "WXApi.h"
+#import <SafeNumberLib/SafeNumberLib.h>
+#import "WXApi.h"
 ```
 
 复制代码
