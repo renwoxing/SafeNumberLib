@@ -222,7 +222,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-## 获取号码价格、号码类型、号码长度
+## 获取号码价格/号码类型/号码长度
 ```
 [SN_Query getNumberPtlCompletion:^(SN_Error *error, SN_NumPtlModel *numberFilteModel) {
     if (error) {
