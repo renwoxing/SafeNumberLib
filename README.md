@@ -17,6 +17,7 @@
     (请按照微信和支付宝的文档导入SDK)
 
 4 导入系统库
+```
     libc++.tbd
     QuartzCore
     CoreText
@@ -30,6 +31,7 @@
     CoreMotion
     Foundation
     UIKit
+```
 
 5 在AppDelegate中添加
 ```
