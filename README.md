@@ -91,7 +91,7 @@
   - [更换手机号码](#更换手机号码)
 - [安全号码](#安全号码)
   - [查询安全号码](#查询安全号码)
-  - [获取号码价格](#获取号码价格)
+  - [获取号码价格类型长度](#获取号码价格类型长度)
   - [我的安全好列表](#我的安全好列表)
   - [更改安全号码备注](#更改安全号码备注)
   - [是否停用安全号码](#是否停用安全号码)
@@ -222,7 +222,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-## 获取号码价格
+## 获取号码价格类型长度
 ```
 [SN_Query getNumberPtlCompletion:^(SN_Error *error, SN_NumPtlModel *numberFilteModel) {
     if (error) {
