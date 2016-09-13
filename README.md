@@ -8,7 +8,7 @@
 2 导入依赖库  AFNetworking.framework (https://github.com/AFNetworking/AFNetworking/releases)
             Mantle.framework (https://github.com/Mantle/Mantle/releases)
 
-    在TARGETS中选择你的target， General->Embedded Binaries 中导入 AFNetworking  Mantle
+    在TARGETS中选择你的target， General->Embedded Binaries 中导入 AFNetworking和Mantle
 
 3 导入微信 支付宝的客户端支付SDK
     微信  (https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319164&token=&lang=zh_CN)
