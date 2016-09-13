@@ -79,16 +79,37 @@
 =======
 
 - [用户信息接口](#用户信息接口)
+  - [获取验证码成功](#获取验证码成功)
+  - [登录](#登录)
+  - [获取Cookie](#获取Cookie)
+  - [登出](#登出)
+  - [获取用户信息](#获取用户信息)
+  - [更新昵称](#更新昵称)
+  - [更新性别](#更新性别)
+  - [上传用户头像](#上传用户头像)
+  - [校验原手机号码](#校验原手机号码)
+  - [更换手机号码](#更换手机号码)
 - [安全号码](#安全号码)
+  - [查询安全号码](#查询安全号码)
+  - [获取号码价格、号码类型、号码长度](#获取号码价格、号码类型、号码长度)
+  - [我的安全好列表](#我的安全好列表)
+  - [更改安全号码备注](#更改安全号码备注)
+  - [是否停用安全号码](#是否停用安全号码)
+  - [购买号码页面获取的默认号码及套餐](#购买号码页面获取的默认号码及套餐)
+  - [查询套餐](#查询套餐)
+  - [安全号详情](#安全号详情)
+  - [查询安全号](#查询安全号)
+  - [更换安全号码](#更换安全号码)
 - [支付](#支付)
+  - [支付](#支付) 
 
 ```
 #import <SafeNumberLib/SafeNumberLib.h>
 ```
 
-### 用户信息接口
+# 用户信息接口
 
-* 获取验证码成功
+## 获取验证码成功
 ```
 [SN_UserInfoManager getCodeWithPhoneNumber:@"13811111111" completion:^(SN_Error *error) {
   if (!error) {
@@ -98,7 +119,7 @@
   }
 }];
 ```
-* 登录
+## 登录
 ```
 [SN_UserInfoManager loginWithPhoneNumber:@"13811111111" code:@"1234" completion:^(SN_Error *error, SN_UserModel *user) {
     if (error) {
@@ -108,7 +129,7 @@
     }
 }];
 ```
-* 获取Cookie
+## 获取Cookie
 ```
 [SN_UserInfoManager getCookieCompletion:^(SN_Error *error) {
     if (error) {
@@ -127,7 +148,7 @@
     NSLog(@"%@", error.message);
 }];
 ```
-* 获取用户信息
+## 获取用户信息
 ```
 [SN_UserInfoManager getUserInfoWithPhoneNumber:@"13811111111" completion:^(SN_Error *error, SN_UserModel *user) {
     if (error) {
@@ -137,7 +158,7 @@
     }
 }];
 ```
-* 更新昵称
+## 更新昵称
 ```
 [SN_UserInfoManager updateUserNicknameWithPhoneNumber:@"13811111111" nickname:@"nickname" completion:^(SN_Error *error) {
     if (error) {
@@ -147,7 +168,7 @@
     }
 }];
 ```
-* 更新性别
+## 更新性别
 ```
 [SN_UserInfoManager updateUserSexWithPhoneNumber:@"13811111111" sex:@"B" completion:^(SN_Error *error) {
     if (error) {
@@ -157,7 +178,7 @@
     }
 }];
 ```
-* 上传用户头像
+## 上传用户头像
 ```
 UIImage *image = [UIImage imagedWithName:@""];
 [SN_UserInfoManager uploadUserAvatarWihtPhoneNumber:@"13811111111" image:image completion:^(SN_Error *error) {
@@ -168,7 +189,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 校验原手机号码
+## 校验原手机号码
 ```
 [SN_UserInfoManager validOldMobileWithPhone:@"13811111111" code:@"1234" completion:^(SN_Error *error) {
     if (error.success) {
@@ -189,9 +210,9 @@ UIImage *image = [UIImage imagedWithName:@""];
 }];
 ```
 
-### 安全号码
+# 安全号码
 
-* 查询安全号码
+## 查询安全号码
 ```
 [SN_Query querySafeNumberWithQuery:@"搜索字符串" phoneLength:@"11" phoneType:@"" phonePrice:@"" completion:^(SN_Error *error, NSArray<SN_NumberAndPriceModel *> *results) {
     if (error) {
@@ -201,7 +222,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 获取号码价格、号码类型、号码长度
+## 获取号码价格、号码类型、号码长度
 ```
 [SN_Query getNumberPtlCompletion:^(SN_Error *error, SN_NumPtlModel *numberFilteModel) {
     if (error) {
@@ -211,7 +232,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 我的安全好列表
+## 我的安全好列表
 ```
 [SN_Query mySafeNumberListWithPhone:@"13811111111" completion:^(SN_Error *error, NSArray<SN_SafeNumberModel *> *results) {
     if (error) {
@@ -231,7 +252,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 是否停用安全号码
+## 是否停用安全号码
 ```
 [SN_Query changeIsDisableWithPhone:@"13811111111" sid:@"123142" phoneState:SN_PhoneStateDisable completion:^(SN_Error *error) {
     if (error.success) {
@@ -251,7 +272,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 查询套餐
+## 查询套餐
 ```
 [SN_Query queryPackageWithSid:@"123142" completion:^(SN_Error *error, NSArray<SN_PackageModel *> *list) {
     if (!error) {
@@ -261,7 +282,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 安全号详情
+## 安全号详情
 ```
 [SN_Query getSafeNumberDetailWithPhone:@"13811111111" sid:@"123142" completion:^(SN_Error *error, SN_SafeNumberModel *safeNumberModel) {
     if (!error) {
@@ -271,7 +292,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 查询安全号
+## 查询安全号
 ```
 [SN_Query querySafeNumberWithPhone:@"13811111111" sid:@"123142" completion:^(SN_Error *error, NSArray<SN_NumberAndPriceModel *> *list) {
     if (error) {
@@ -281,7 +302,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 更换安全号码
+## 更换安全号码
 ```
 [SN_Query changeSafeNumberWithPhone:@"13811111111" sid:@"123142" newSid:@"123143" completion:^(SN_Error *error) {
     if (error.success) {
@@ -293,9 +314,9 @@ UIImage *image = [UIImage imagedWithName:@""];
 }];
 ```
 
-### 支付
+# 支付
 
-* 支付
+## 支付
 ```
 SNPaymentType payType = SNPaymentTypeAli;
 NSString *sid = @"1234567890";
