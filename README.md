@@ -81,7 +81,7 @@
 - [用户信息接口](#用户信息接口)
   - [获取验证码成功](#获取验证码成功)
   - [登录](#登录)
-  - [获取Cookie](#获取Cookie)
+  - [Cookie](#Cookie)
   - [登出](#登出)
   - [获取用户信息](#获取用户信息)
   - [更新昵称](#更新昵称)
@@ -129,7 +129,7 @@
     }
 }];
 ```
-## 获取Cookie
+## Cookie
 ```
 [SN_UserInfoManager getCookieCompletion:^(SN_Error *error) {
     if (error) {
