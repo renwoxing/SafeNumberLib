@@ -98,7 +98,7 @@
   - [购买号码页面获取的默认号码及套餐](#购买号码页面获取的默认号码及套餐)
   - [查询套餐](#查询套餐)
   - [安全号详情](#安全号详情)
-  - [查询安全号](#查询安全号)
+  - [更换安全号查询](#更换安全号查询)
   - [更换安全号码](#更换安全号码)
 - [支付](#支付)
   - [支付](#支付) 
@@ -292,7 +292,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-## 查询安全号
+## 更换安全号查询
 ```
 [SN_Query querySafeNumberWithPhone:@"13811111111" sid:@"123142" completion:^(SN_Error *error, NSArray<SN_NumberAndPriceModel *> *list) {
     if (error) {
