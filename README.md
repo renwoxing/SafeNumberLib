@@ -110,4 +110,137 @@ UIImage *image = [UIImage imagedWithName:@""];
 }];
 ```
 
+### 安全号码
 
+* 查询安全号码
+```
+[SN_Query querySafeNumberWithQuery:@"搜索字符串" phoneLength:@"11" phoneType:@"" phonePrice:@"" completion:^(SN_Error *error, NSArray<SN_NumberAndPriceModel *> *results) {
+    if (error) {
+        NSLog(@"%@", error.message);
+    } else {
+        NSLog(@"%@", results);
+    }
+}];
+```
+* 获取号码价格、号码类型、号码长度
+```
+[SN_Query getNumberPtlCompletion:^(SN_Error *error, SN_NumPtlModel *numberFilteModel) {
+    if (error) {
+        NSLog(@"%@", error.message);
+    } else {
+        NSLog(@"%@", numberFilteModel);
+    }
+}];
+```
+* 我的安全好列表
+```
+[SN_Query mySafeNumberListWithPhone:@"13811111111" completion:^(SN_Error *error, NSArray<SN_SafeNumberModel *> *results) {
+    if (error) {
+        NSLog(@"%@", error.message);
+    } else {
+        NSLog(@"%@", results);
+    }
+}];
+```
+* 更改安全号码备注
+```
+[SN_Query changeRemarkWithPhone:@"13811111111" remarks:@"备注" sid:@"123142" completion:^(SN_Error *error) {
+    if (error.success) {
+        NSLog(@"%@", error.message);
+    } else {
+        NSLog(@"%@", error.message);
+    }
+}];
+```
+* 是否停用安全号码
+```
+[SN_Query changeIsDisableWithPhone:@"13811111111" sid:@"123142" phoneState:SN_PhoneStateDisable completion:^(SN_Error *error) {
+    if (error.success) {
+        NSLog(@"%@", error.message);
+    } else {
+        NSLog(@"%@", error.message);
+    }
+}];
+```
+* 购买号码页面获取的默认号码及套餐
+```
+[SN_Query queryDefaultSafeNumberPurchaseInfoCompletion:^(SN_Error *error, SN_PackageInfoModel *model) {
+    if (!error) {
+        NSLog(@"%@", model);
+    } else {
+        NSLog(@"%@", error.message);
+    }
+}];
+```
+* 查询套餐
+```
+[SN_Query queryPackageWithSid:@"123142" completion:^(SN_Error *error, NSArray<SN_PackageModel *> *list) {
+    if (!error) {
+        NSLog(@"%@", list);
+    } else {
+        NSLog(@"%@", error.message);
+    }
+}];
+```
+* 安全号详情
+```
+[SN_Query getSafeNumberDetailWithPhone:@"13811111111" sid:@"123142" completion:^(SN_Error *error, SN_SafeNumberModel *safeNumberModel) {
+    if (!error) {
+        NSLog(@"%@", safeNumberModel);
+    } else {
+        NSLog(@"%@", error.message);
+    }
+}];
+```
+* 查询安全号
+```
+[SN_Query querySafeNumberWithPhone:@"13811111111" sid:@"123142" completion:^(SN_Error *error, NSArray<SN_NumberAndPriceModel *> *list) {
+    if (error) {
+        NSLog(@"%@", error.message);
+    } else {
+        NSLog(@"%@", list);
+    }
+}];
+```
+* 更换安全号码
+```
+[SN_Query changeSafeNumberWithPhone:@"13811111111" sid:@"123142" newSid:@"123143" completion:^(SN_Error *error) {
+    if (error.success) {
+        
+    } else {
+        
+    }
+    NSLog(@"%@", error.message);
+}];
+```
+
+### 支付
+
+* 支付
+```
+SNPaymentType payType = SNPaymentTypeAli;
+NSString *sid = @"1234567890";
+
+SN_PayInfoModel *payInfoModel = [[SN_PayInfoModel alloc] init];
+payInfoModel.totalfee = @"0.01";//套餐价格
+payInfoModel.subject = @"安全号码购买";
+payInfoModel.body = [NSString stringWithFormat:@"购买安全号码:%@",sid];
+payInfoModel.phone = @"13811111111";
+payInfoModel.accountnumber = sid;
+payInfoModel.monthdesc = @"三个月";//套餐描述
+payInfoModel.month = @"";//套餐有效日期
+payInfoModel.ordertype = SNOrderTypePurchase;//支付订单类型(购买和充值)
+payInfoModel.paymentway = payType;//支付方式(支付宝和微信)
+payInfoModel.orderprice = [NSString stringWithFormat:@"%.0f",0.01];//套餐价格
+
+//应用注册scheme,在Info-Info.plist定义URL types
+payInfoModel.appScheme = @"SafeNumberAPI";//支付宝的URL Scheme
+
+[[SN_Payment sharedPayment] startPayWithPayInfo:payInfoModel completion:^(SN_Error *error, SN_OrderResultModel *orderResultModel) {
+    if (error) {
+        NSLog(@"%@",error.message);
+    } else {
+        NSLog(@"order is %@", orderResultModel);
+    }
+}];
+```
