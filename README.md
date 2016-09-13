@@ -1,6 +1,77 @@
 # SafeNumberLib
 
-使用方法
+安装
+=======
+
+1 导入SafeNumberLib.framework库
+
+2 导入依赖库  AFNetworking.framework (https://github.com/AFNetworking/AFNetworking/releases)
+            Mantle.framework (https://github.com/Mantle/Mantle/releases)
+
+    在TARGETS中选择你的target， General->Embedded Binaries 中导入 AFNetworking  Mantle
+
+3 导入微信 支付宝的客户端支付SDK
+    微信  (https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319164&token=&lang=zh_CN)
+    支付宝 (https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7629140.0.0.dcjHHi&treeId=193&articleId=104509&docType=1)
+        
+    (请按照微信和支付宝的文档导入SDK)
+
+4 导入系统库
+    libc++.tbd
+    QuartzCore
+    CoreText
+    CoreGraphics
+    CFNetwork
+    libsqlite3.0.tbd
+    libz.tbd
+    SystemConfiguration
+    CoreTelephony
+    Security
+    CoreMotion
+    Foundation
+    UIKit
+
+5 在AppDelegate中添加
+```
+    #import <SafeNumberLib/SafeNumberLib.h>
+    #import "WXApi.h"
+```
+
+复制代码[WXApi registerApp:WeChatAppID withDescription:@"SafeNumber API Demo"]; 到
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions方法中
+传入自己的微信AppID 和描述信息
+
+复制以下代码到AppDelegate.m中
+```
+- (BOOL)application:(UIApplication *)application
+handleOpenURL:(NSURL *)url{
+return [[SN_Payment sharedPayment] handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation{
+return [[SN_Payment sharedPayment] handleOpenURL:url];
+}
+
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app
+openURL:(NSURL *)url
+options:(NSDictionary<NSString*, id> *)options{
+return [[SN_Payment sharedPayment] handleOpenURL:url];
+}
+```
+备注：
+本版本不支持HTTPS协议,请复制以下代码到Info.plist
+
+<key>NSAppTransportSecurity</key>
+<dict>
+<key>NSAllowsArbitraryLoads</key>
+<true/>
+</dict>
+
+接口使用方法
 =======
 
 ```
