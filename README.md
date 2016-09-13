@@ -137,7 +137,7 @@
     }
 }];
 ```
-* 登出
+## 登出
 ```
 [SN_UserInfoManager logoutCompletion:^(SN_Error *error) {
     if (!error.success) {
@@ -199,7 +199,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 更换手机号码
+## 更换手机号码
 ```
 [SN_UserInfoManager bindNewMobilePhone:@"13811111111" newPhone:@"13811111112"code:@"1234" completion:^(SN_Error *error) {
     if (error.success) {
@@ -242,7 +242,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 更改安全号码备注
+## 更改安全号码备注
 ```
 [SN_Query changeRemarkWithPhone:@"13811111111" remarks:@"备注" sid:@"123142" completion:^(SN_Error *error) {
     if (error.success) {
@@ -262,7 +262,7 @@ UIImage *image = [UIImage imagedWithName:@""];
     }
 }];
 ```
-* 购买号码页面获取的默认号码及套餐
+## 购买号码页面获取的默认号码及套餐
 ```
 [SN_Query queryDefaultSafeNumberPurchaseInfoCompletion:^(SN_Error *error, SN_PackageInfoModel *model) {
     if (!error) {
