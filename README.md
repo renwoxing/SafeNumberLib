@@ -49,23 +49,17 @@
 
 复制以下代码到AppDelegate.m中
 ```
-- (BOOL)application:(UIApplication *)application
-handleOpenURL:(NSURL *)url{
-return [[SN_Payment sharedPayment] handleOpenURL:url];
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+  return [[SN_Payment sharedPayment] handleOpenURL:url];
 }
 
-- (BOOL)application:(UIApplication *)application
-openURL:(NSURL *)url
-sourceApplication:(NSString *)sourceApplication
-annotation:(id)annotation{
-return [[SN_Payment sharedPayment] handleOpenURL:url];
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  return [[SN_Payment sharedPayment] handleOpenURL:url];
 }
 
 // NOTE: 9.0以后使用新API接口
-- (BOOL)application:(UIApplication *)app
-openURL:(NSURL *)url
-options:(NSDictionary<NSString*, id> *)options{
-return [[SN_Payment sharedPayment] handleOpenURL:url];
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options {
+  return [[SN_Payment sharedPayment] handleOpenURL:url];
 }
 ```
 备注：
